@@ -36,7 +36,6 @@ spec:
                   key: MYSQL_PASSWORD
             - name: MYSQL_DATABASE
               value: event_manager
-          volumeMounts:
-            - name: mariadb-pvc-claim
-              mountPath: /var/lib/mariadb/data
-              subPath: mariadb
+                 volumeMounts:
+            - name: mariadb-database-persistent-volume-storage
+              mountPath: /var/lib/mysql
