@@ -36,6 +36,6 @@ spec:
                   key: MYSQL_PASSWORD
             - name: MYSQL_DATABASE
               value: event_manager
-                 volumeMounts:
+          volumeMounts:
             - name: mariadb-database-persistent-volume-storage
               mountPath: /var/lib/mysql
