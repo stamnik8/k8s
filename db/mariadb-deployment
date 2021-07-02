@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mariadb-service
+      app: db
+  template:
+    metadata:
+      labels:
+        component: mariadb-service
+        app: db
+    spec:
+      volumes:
+        - name:  mariadb-database-persistent-volume-storage
+          persistentVolumeClaim:
+            claimName: mariadb-pvc-claim
+      containers:
+        - name: mariadb
+          image: "mariadb:10.4"
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mdb-user
+                  key: MYSQL_USER
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mdb-user
+                  key: MYSQL_PASSWORD
+            - name: MYSQL_DATABASE
+              value: event_manager
+          volumeMounts:
+            - name: mariadb-pvc-claim
+              mountPath: /var/lib/mariadb/data
+              subPath: mariadb
