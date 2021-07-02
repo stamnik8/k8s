@@ -34,6 +34,11 @@ spec:
                 secretKeyRef:
                   name: mdb-user
                   key: MYSQL_PASSWORD
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mdb-user
+                  key: MYSQL_ROOT_PASSWORD
             - name: MYSQL_DATABASE
               value: event_manager
           volumeMounts:
