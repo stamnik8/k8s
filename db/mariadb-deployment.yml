@@ -7,12 +7,12 @@ spec:
   selector:
     matchLabels:
       component: mariadb-service
-      app: db
+      app: maria_db
   template:
     metadata:
       labels:
         component: mariadb-service
-        app: db
+        app: maria_db
     spec:
       volumes:
         - name:  mariadb-database-persistent-volume-storage
