@@ -8,5 +8,6 @@ spec:
     component: mariadb-service
     app: db
   ports:
-    - port: 3306
+    - protocol: TCP
+      port: 3306
       targetPort: 3306
