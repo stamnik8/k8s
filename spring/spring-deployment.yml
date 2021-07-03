@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: spring
-          image: 'ghcr.io/stamnik/eventmanager_api_service:latest'
+          image: 'ghcr.io/stamnik8/eventmanager_api_service:latest'
           ports:
             - containerPort: 8080
           envFrom:
