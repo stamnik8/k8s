@@ -19,7 +19,7 @@ spec:
           persistentVolumeClaim:
             claimName: mariadb-pvc-claim
       containers:
-        - name: maria_db
+        - name: mariadb
           image: "mariadb:10.4"
           ports:
             - containerPort: 3306
