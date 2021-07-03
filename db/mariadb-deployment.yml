@@ -18,11 +18,15 @@ spec:
         - name:  mariadb-database-persistent-volume-storage
           persistentVolumeClaim:
             claimName: mariadb-pvc-claim
+      ports:
+        - containerPort: 3306
+          name:
       containers:
         - name: mariadb
           image: "mariadb:10.4"
           ports:
             - containerPort: 3306
+              name: mariadb
           env:
             - name: MYSQL_USER
               valueFrom:
