@@ -6,7 +6,7 @@ spec:
   type: ClusterIP
   selector:
     component: mariadb-service
-    app: db
+    app: mariadb
   ports:
     - protocol: TCP
       port: 3306
