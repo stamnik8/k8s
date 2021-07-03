@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: spring
+      app: evman
+  template:
+    metadata:
+      labels:
+        component: spring
+        app: evman
+    spec:
+      containers:
+        - name: spring
+          image: 'ghcr.io/stamnik/eventmanager_api_service:latest'
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: spring-config
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com
